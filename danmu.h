@@ -1,4 +1,5 @@
 ﻿#pragma once
+#pragma execution_character_set("utf-8")
 
 #include <QLabel>
 #include <QRect>
@@ -11,6 +12,7 @@
 #include <QPropertyAnimation>
 #include <QParallelAnimationGroup>
 #include <QDesktopWidget>
+#include <QApplication>
 enum{red=1,blue,green,white,black};
 class Danmu : public QLabel{
 
@@ -18,7 +20,9 @@ class Danmu : public QLabel{
 
   public:
 
-      Danmu(QWidget * parent,QString text,QString color,int type,QRect rect,QFont danmuFont = QFont("SimHei",20,100),double Transparency = 1.00,int runTime=15000);       //构造函数，常用
+      Danmu(QWidget * parent,QString text,QString color,int type,QFont danmuFont = QFont("SimHei",20,100),double Transparency = 1.00,int runTime=15000);       //构造函数，常用
+
+      void shootDanmu();
 
       ~Danmu();     //析构函数
 

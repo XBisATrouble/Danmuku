@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+QT       += core websockets
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = danmuku
@@ -25,9 +25,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    danmu.cpp
+    danmu.cpp \
+    echoclient.cpp
 
 HEADERS  += mainwindow.h \
-    danmu.h
+    danmu.h \
+    echoclient.h
 
 FORMS    += mainwindow.ui

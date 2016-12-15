@@ -1,14 +1,19 @@
 ﻿#include "Danmu.h"
 
-Danmu::Danmu(QWidget * parent,QString text,QString color,int type,QRect rect,QFont danmuFont,double Transparency,int runTime):QLabel(parent){
-    DText = text;
-    //this->setText(text);        //设置内容
-    this->color=color;      //设置内容
+Danmu::Danmu(QWidget * parent,QString text,QString color,int type,QFont danmuFont,double Transparency,int runTime):QLabel(parent){
+    qDebug()<<"弹幕正在组装中!"<<endl;
+    QDesktopWidget* desktopWidget;                                    //获取桌面设备
+    QRect rect;
+    desktopWidget = QApplication::desktop();                   //获取桌面设备
+    rect = desktopWidget->screenGeometry();              //获取桌面大小的矩形
+    this->screenrect=rect;
+    this->DText=text;       //设置内容
+    this->color=color;      //设置颜色
     this->type=type;        //设置类型
     this->danmuFont=danmuFont;      //弹幕字体
     this->Transparency=Transparency;        //弹幕透明度
     this->runTime=runTime;
-    this->screenrect=rect;
+    //this->screenrect=rect;
     QFontMetrics metrics(danmuFont);
     QPalette palll=QPalette();
     QString DColor = color;
@@ -77,7 +82,6 @@ Danmu::Danmu(QWidget * parent,QString text,QString color,int type,QRect rect,QFo
     this->setWindowOpacity(this->Transparency);
     this->show();
     this->repaint();
-    anim2->start();
         //connect(anim2,SIGNAL(finished()),this,SLOT(deleteLater()));
 }
 
@@ -110,5 +114,11 @@ void Danmu::paintEvent(QPaintEvent *){  //弹幕绘制函数
 }
 
 Danmu::~Danmu(){
-    qDebug()<<"Danmu has been destoryed!"<<endl;
+    qDebug()<<"弹幕已经被析构!"<<endl;
+}
+
+void Danmu::shootDanmu()
+{
+    anim2->start();
+    qDebug()<<"弹幕已经发射!"<<endl;
 }
