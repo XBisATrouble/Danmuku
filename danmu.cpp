@@ -19,6 +19,7 @@ Danmu::Danmu(QWidget * parent,QString text,QString color,int type,QFont danmuFon
     QString DColor = color;
     anim2 = NULL;
     //颜色字符串转化为特定的颜色
+    //TODO:***改为switch****
     if(DColor == "White"){
         palll.setColor(QPalette::WindowText,QColor(255,255,246,255));
         this->qcolor=QColor(255,255,246,255);
@@ -82,7 +83,6 @@ Danmu::Danmu(QWidget * parent,QString text,QString color,int type,QFont danmuFon
     this->setWindowOpacity(this->Transparency);
     this->show();
     this->repaint();
-        //connect(anim2,SIGNAL(finished()),this,SLOT(deleteLater()));
 }
 
 void Danmu::paintEvent(QPaintEvent *){  //弹幕绘制函数
@@ -120,5 +120,6 @@ Danmu::~Danmu(){
 void Danmu::shootDanmu()
 {
     anim2->start();
-    qDebug()<<"弹幕已经发射!"<<endl;
+    qDebug()<<"弹幕已经发射!"<<endl;   
+    connect(anim2,SIGNAL(finished()),this,SLOT(deleteLater()));   //监测弹幕是否应该被析构
 }

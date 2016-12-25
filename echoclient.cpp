@@ -1,6 +1,6 @@
 ﻿#include "echoclient.h"
 #include <QtCore/QDebug>
-
+//参考自qt官网websocket应用
 QT_USE_NAMESPACE
 
 EchoClient::EchoClient(const QUrl &url, bool debug, QObject *parent) :
@@ -10,7 +10,6 @@ EchoClient::EchoClient(const QUrl &url, bool debug, QObject *parent) :
 {
     if (m_debug)
         qDebug() << "WebSocket server:" << url;
-    //this->danmu=new Danmu(NULL,"text","White",1);
     connect(&m_webSocket, &QWebSocket::connected, this, &EchoClient::onConnected);
     connect(&m_webSocket, &QWebSocket::disconnected, this, &EchoClient::closed);
     m_webSocket.open(QUrl(url));
@@ -30,7 +29,7 @@ void EchoClient::onTextMessageReceived(QString message)
     if (m_debug){
         Danmu *danmu=new Danmu(NULL,message,"white",1);
         qDebug() << "Message received:" << message;
-        danmu->shootDanmu();
+        danmu->shootDanmu();  //调用shoot函数发射弹幕
     }
 
     //m_webSocket.close();

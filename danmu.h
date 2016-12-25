@@ -20,7 +20,7 @@ class Danmu : public QLabel{
 
   public:
 
-      Danmu(QWidget * parent,QString text,QString color,int type,QFont danmuFont = QFont("SimHei",20,100),double Transparency = 1.00,int runTime=15000);       //构造函数，常用
+      Danmu(QWidget * parent,QString text,QString color,int type,QFont danmuFont = QFont("SimHei",20,100),double Transparency = 1.00,int runTime=15000);       //构造函数
 
       void shootDanmu();
 
