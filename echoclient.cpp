@@ -1,6 +1,7 @@
 ﻿#include "echoclient.h"
 #include <QtCore/QDebug>
-//参考自qt官网websocket应用
+#include <QtCore/QJsonObject>
+#include <QtCore/QJsonDocument>
 QT_USE_NAMESPACE
 
 EchoClient::EchoClient(const QUrl &url, bool debug, QObject *parent) :
@@ -21,7 +22,18 @@ void EchoClient::onConnected()
         qDebug() << "WebSocket connected";
     connect(&m_webSocket, &QWebSocket::textMessageReceived,
             this, &EchoClient::onTextMessageReceived);
-    m_webSocket.sendTextMessage(QStringLiteral("from QT5"));
+
+    QJsonObject json;
+    json.insert("mode",QString("init"));
+    json.insert("flag",QString("classroom"));
+    json.insert("room",QString("2411"));
+
+    QJsonDocument document;
+    document.setObject(json);
+    QByteArray byte_array=document.toJson(QJsonDocument::Compact);
+    QString json_str(byte_array);
+
+    m_webSocket.sendTextMessage(json_str);
 }
 
 void EchoClient::onTextMessageReceived(QString message)
