@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include "danmu.h"
+#include "titlewidget.h"
+#include <QVBoxLayout>
+#include <QPushButton>
+#include <QMouseEvent>
 
 namespace Ui {
 class MainWindow;
@@ -17,7 +21,23 @@ public:
     ~MainWindow();
 
 private:
+    void initUI();
     Ui::MainWindow *ui;
+    TitleWidget *titleWidget;
+    QPushButton *miniBut;
+    QPushButton *closeBut;
+    QPushButton *logoBut;
+
+    QPoint startPos;
+    QPoint clickPos;
+    bool isLeftPressDown;//判断是否左键按下
+
+
+protected:
+    //三个鼠标事件 按下 移动 释放
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
 };
 
 #endif // MAINWINDOW_H

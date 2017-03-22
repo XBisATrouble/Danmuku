@@ -26,10 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     danmu.cpp \
-    echoclient.cpp
+    echoclient.cpp \
+    titlewidget.cpp
 
 HEADERS  += mainwindow.h \
     danmu.h \
-    echoclient.h
+    echoclient.h \
+    titlewidget.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    myresource.qrc
