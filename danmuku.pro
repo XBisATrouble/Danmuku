@@ -27,12 +27,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     danmu.cpp \
     echoclient.cpp \
-    titlewidget.cpp
+    titlewidget.cpp \
+    messagewidget.cpp
 
 HEADERS  += mainwindow.h \
     danmu.h \
     echoclient.h \
-    titlewidget.h
+    titlewidget.h \
+    messagewidget.h
 
 FORMS    += mainwindow.ui
 

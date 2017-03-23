@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "danmu.h"
 #include "titlewidget.h"
+#include "messagewidget.h"
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QMouseEvent>
@@ -24,13 +25,21 @@ private:
     void initUI();
     Ui::MainWindow *ui;
     TitleWidget *titleWidget;
+    MessageWidget *messageWidget;
+    QWidget *stateWidget;
     QPushButton *miniBut;
     QPushButton *closeBut;
     QPushButton *logoBut;
+    QPushButton *registerBut;
+    QPushButton *connect;
+    QPushButton *disconnect;
 
     QPoint startPos;
     QPoint clickPos;
     bool isLeftPressDown;//判断是否左键按下
+    QLabel *statusLabel;
+    QLabel *infoLabel;
+
 
 
 protected:
