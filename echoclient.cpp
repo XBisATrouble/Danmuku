@@ -3,7 +3,7 @@
 #include <QtCore/QJsonObject>
 #include <QtCore/QJsonDocument>
 QT_USE_NAMESPACE
-
+extern bool isShowDanmu;
 EchoClient::EchoClient(const QUrl &url, bool debug, QObject *parent) :
     QObject(parent),
     m_url(url),
@@ -26,7 +26,7 @@ void EchoClient::onConnected()
     QJsonObject json;
     json.insert("mode",QString("init"));
     json.insert("flag",QString("classroom"));
-    json.insert("room",QString("2411"));
+    json.insert("room",QString("2410"));             //发送教室id
 
     QJsonDocument document;
     document.setObject(json);
@@ -42,7 +42,10 @@ void EchoClient::onTextMessageReceived(QString message)
         Danmu *danmu=new Danmu(NULL,message,"white",1);
         qDebug() << "Message received:" << message;
         danmu->shootDanmu();  //调用shoot函数发射弹幕
+        qDebug()<<isShowDanmu;
+        if (!isShowDanmu){
+            danmu->hide();
+        }
     }
-
     //m_webSocket.close();
 }

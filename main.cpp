@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     w.show();
-    //EchoClient client(QUrl(QStringLiteral("ws://115.159.113.139:1997")), 1);          //本地0.0.0.0
-    //QObject::connect(&client, &EchoClient::closed, &a, &QCoreApplication::quit);
+    EchoClient client(QUrl(QStringLiteral("ws://115.159.113.139:1997")), 1);          //本地0.0.0.0
+    QObject::connect(&client, &EchoClient::closed, &a, &QCoreApplication::quit);
     return a.exec();
 }

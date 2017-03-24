@@ -1,6 +1,8 @@
 ﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+bool isShowDanmu=true;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -73,12 +75,14 @@ void MainWindow::initUI()
     disconnect=new QPushButton(this);
     disconnect->setFixedSize(100,60);
     disconnect->setText(tr("关闭弹幕"));
+    QObject::connect(connect,SIGNAL(clicked(bool)),this,SLOT(OpenDanmu()));
+    QObject::connect(disconnect,SIGNAL(clicked(bool)),this,SLOT(CloseDanmu()));
 
     QHBoxLayout *layoutBtn=new QHBoxLayout();
     layoutBtn->addWidget(connect);
     layoutBtn->addWidget(disconnect);
 
-    statusLabel = new QLabel("         当前状态:未开启",this);
+    statusLabel = new QLabel("         当前状态:已开启",this);
     statusLabel->setFont(ft);
     //垂直布局
     QVBoxLayout *layout1=new QVBoxLayout();
@@ -93,7 +97,7 @@ void MainWindow::initUI()
     fenge->setFixedSize(f.size());
 
     //信息栏
-    infoLabel=new QLabel("欢迎xx老师，您当前的教室为:2410");
+    infoLabel=new QLabel("       欢迎 张三 老师，您当前的教室为:2410");
     infoLabel->setFont(ft);
 
     //状态栏
@@ -170,4 +174,14 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
     }
 }
 
+void MainWindow::OpenDanmu()
+{
+    isShowDanmu=true;
+    statusLabel->setText("         当前状态:已开启");
+}
 
+void MainWindow::CloseDanmu()
+{
+    isShowDanmu=false;
+    statusLabel->setText("         当前状态:已关闭");
+}

@@ -8,6 +8,8 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QMouseEvent>
+#include <QMessageBox>
+
 
 namespace Ui {
 class MainWindow;
@@ -36,7 +38,8 @@ private:
 
     QPoint startPos;
     QPoint clickPos;
-    bool isLeftPressDown;//判断是否左键按下
+    bool isLeftPressDown;//判断是否左键按下   
+    //bool isShowDanmu=true;
     QLabel *statusLabel;
     QLabel *infoLabel;
 
@@ -47,6 +50,10 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
+
+public slots:
+    void OpenDanmu();
+    void CloseDanmu();
 };
 
 #endif // MAINWINDOW_H
