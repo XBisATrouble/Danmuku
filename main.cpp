@@ -3,14 +3,21 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QCommandLineParser>
 #include <QtCore/QCommandLineOption>
-
+#include "logindialog.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
+    LoginDialog login;
+    if (login.exec() == QDialog::Accepted)
+    {
+       w.show();
+       return a.exec();
+    }
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-    w.show();
-    EchoClient client(QUrl(QStringLiteral("ws://115.159.113.139:1997")), 1);          //本地0.0.0.0
-    QObject::connect(&client, &EchoClient::closed, &a, &QCoreApplication::quit);
+
+    //w.show();
+    //EchoClient client(QUrl(QStringLiteral("ws://115.159.113.139:1997")), 1);          //本地0.0.0.0
+    //QObject::connect(&client, &EchoClient::closed, &a, &QCoreApplication::quit);
     return a.exec();
 }

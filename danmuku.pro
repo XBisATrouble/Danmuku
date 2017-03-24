@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += core sql
 QT       += core websockets
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,15 +29,18 @@ SOURCES += main.cpp\
     danmu.cpp \
     echoclient.cpp \
     titlewidget.cpp \
-    messagewidget.cpp
+    messagewidget.cpp \
+    logindialog.cpp
 
 HEADERS  += mainwindow.h \
     danmu.h \
     echoclient.h \
     titlewidget.h \
-    messagewidget.h
+    messagewidget.h \
+    logindialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    logindialog.ui
 
 RESOURCES += \
     myresource.qrc
