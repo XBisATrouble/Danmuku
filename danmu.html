@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <div class="user">xb</div>
+  <input  type="text" id="content">
+  <button  onclick="send();">发送</button>
+</body>
+<script type="text/javascript">
+  var exampleSocket = new WebSocket("ws://115.159.113.139:1997");
+
+  exampleSocket.onopen = function (event) {
+    var msg = {
+    mode:"init",
+    flag:"student",
+    room:"2410",
+    student:"2015213865",
+    date: Date.now()
+    };
+    // 将其作为 JSON 格式字符串发送。
+    exampleSocket.send(JSON.stringify(msg));
+  };
+
+  exampleSocket.onmessage = function (event) {
+    console.log(event.data);
+  }
+
+  function send(){
+    var content=document.getElementById('content').value
+    var msg = {
+    mode:"message",
+    room:"2410",
+    student:"2015213865",
+    date: Date.now(),
+    content:content
+    };
+    // 将其作为 JSON 格式字符串发送。
+    exampleSocket.send(JSON.stringify(msg));
+  }
+</script>
+</html>

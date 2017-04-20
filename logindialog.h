@@ -4,6 +4,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class LoginDialog;
@@ -16,6 +17,7 @@ class LoginDialog : public QDialog
 public:
     explicit LoginDialog(QWidget *parent = 0);
     void initUI();
+    QString name;
     ~LoginDialog();
 
 private slots:

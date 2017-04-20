@@ -5,5 +5,12 @@
         <file>pic/miniBtn.png</file>
         <file>pic/miniBtn2.png</file>
         <file>pic/fenge.png</file>
+        <file>pic/closeBtn3.png</file>
+        <file>pic/Login_demo_2.png</file>
+        <file>pic/button.png</file>
+        <file>pic/密码图标.png</file>
+        <file>pic/用户名图标.png</file>
+        <file>pic/button_hover.png</file>
+        <file>pic/button_press.png</file>
     </qresource>
 </RCC>

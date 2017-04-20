@@ -3,16 +3,16 @@
 
 bool isShowDanmu=true;
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent,QString teacher_name) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    this->teacher_name=teacher_name;
     ui->setupUi(this);
     this->setFixedSize(800,500);
     setWindowFlags( Qt::FramelessWindowHint|Qt::WindowSystemMenuHint| Qt::WindowMinimizeButtonHint);//去掉默认系统标题栏
     //TODO
     initUI();
-
 }
 
 void MainWindow::initUI()
@@ -97,7 +97,10 @@ void MainWindow::initUI()
     fenge->setFixedSize(f.size());
 
     //信息栏
-    infoLabel=new QLabel("       欢迎 张三 老师，您当前的教室为:2410");
+    QString message("       欢迎您 ");
+    message.append(teacher_name);
+    message.append(" 老师，您当前的教室为:2410");
+    infoLabel=new QLabel(message);
     infoLabel->setFont(ft);
 
     //状态栏
@@ -134,11 +137,6 @@ void MainWindow::initUI()
     "QPushButton{border-image: url(://pic/closeBtn.png);}"
     "QPushButton:hover{border-image: url(://pic/closeBtn2.png);}"
     );
-//    registerBut->setStyleSheet(
-//    "QPushButton{background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(214, 214, 214, 255), stop:0.5 rgba(236, 236, 236, 255));border-radius:5px;border: 1px solid rgb(124, 124, 124);}"
-//    "QPushButton:hover{ background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(181, 225, 250, 255), stop:0.5 rgba(222, 242, 251, 255));border-radius:5px;border: 1px solid #3C80B1;}"
-//    "QPushButton:pressed{background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(134, 198, 233, 255), stop:0.5 rgba(206, 234, 248, 255));border-radius:5px;border: 1px solid #5F92B2;}"
-//    );
 }
 
 MainWindow::~MainWindow()
